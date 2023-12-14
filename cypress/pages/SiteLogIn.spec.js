@@ -14,15 +14,14 @@ export class Site {
   }
 
   profileTabOpen() {
-    const userAndPass = `${Cypress.env('siteAuthUserName')}:${Cypress.env('siteAuthPassword')}`;
-    return cy.visit(`https://${userAndPass}@qauto.forstudy.space/panel/profile/`);
+    return cy.get('a[routerlink="profile"]').click()
   }
 
-  waitForCurrentRequest() {
+  waitForSuccessfullCurrentRequest() {
     return cy.request('https://qauto.forstudy.space/api/users/current');
   }
 
-  SuccessfullPhotoUpload() {
+  waitForSuccessfullPhotoUpload() {
     return cy.request('https://qauto.forstudy.space/api/users/profile');
   }
 }

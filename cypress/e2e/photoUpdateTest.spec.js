@@ -8,18 +8,18 @@ describe('Photo upload test', () => {
   const editModal = new EditModal();
 
   it('photo upload check', () => {
-    site.open(),
-      site.userLogIn(),
-      site.open(),
-      site.profileTabOpen(),
-      site.waitForCurrentRequest().then((response) => {
-        expect(response.status).to.eq(200),
-          editModal.elements.editProfileButton().click(),
-          editModal.elements.photoBrowseInput().selectFile('cypress/media/logo2.jpg'),
-          editModal.elements.saveButton().click(),
-          site.SuccessfullPhotoUpload().then((response) => {
-            expect(response.status).to.eq(200);
-          });
+    site.open();
+    site.userLogIn();
+    site.open();
+    site.profileTabOpen();
+    site.waitForSuccessfullCurrentRequest().then((response) => {
+      expect(response.status).to.eq(200);
+      editModal.elements.editProfileButton().click();
+      editModal.elements.photoBrowseInput().selectFile('cypress/media/logo2.jpg');
+      editModal.elements.saveButton().click();
+      site.waitForSuccessfullPhotoUpload().then((response) => {
+        expect(response.status).to.eq(200);
       });
+    });
   });
 });
