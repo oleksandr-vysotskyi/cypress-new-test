@@ -8,11 +8,6 @@ on:
   pull_request:
     types: [opened, edited, reopened]
 
-env:
-        USER_EMAIL: ${{ secrets.USER_EMAIL }}
-        USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-        SITE_AUTH_USER: ${{ secrets.SITE_AUTH_USER }}
-        SITE_AUTH_PASSWORD: ${{ secrets.SITE_AUTH_PASSWORD }}
 jobs:
   cypress_run:
     runs-on: ubuntu-latest
@@ -35,3 +30,9 @@ jobs:
       with:
         name: test-report
         path: mochawesome-report/
+
+env:
+  USER_EMAIL: ${{ secrets.USER_EMAIL }}
+  USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+  SITE_AUTH_USER: ${{ secrets.SITE_AUTH_USER }}
+  SITE_AUTH_PASSWORD: ${{ secrets.SITE_AUTH_PASSWORD }}
