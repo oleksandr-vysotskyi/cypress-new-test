@@ -20,7 +20,13 @@ jobs:
       run: npm install
 
     - name: Run Cypress Tests
-      run: npm run cy:smoke-tests
+      run: |
+        echo "User Email: $USER_EMAIL"
+        echo "User Password: $USER_PASSWORD"
+        echo "Site Auth User: $SITE_AUTH_USER"
+        echo "Site Auth Password: $SITE_AUTH_PASSWORD"
+        npm run cy:smoke-tests
+
     - name: Create report
       if: success() || failure()
       run: npm run report:all
@@ -31,8 +37,3 @@ jobs:
         name: test-report
         path: mochawesome-report/
 
-env:
-  USER_EMAIL: ${{ secrets.USER_EMAIL }}
-  USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-  SITE_AUTH_USER: ${{ secrets.SITE_AUTH_USER }}
-  SITE_AUTH_PASSWORD: ${{ secrets.SITE_AUTH_PASSWORD }}
