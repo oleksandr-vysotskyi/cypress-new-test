@@ -20,12 +20,7 @@ jobs:
       run: npm install
 
     - name: Run Cypress Tests
-      run: |
-        echo "User Email: $user"
-        echo "User Password: $password"
-        echo "Site Auth User: $siteAuthUserName"
-        echo "Site Auth Password: $siteAuthPassword"
-        npm run cy:smoke-tests
+      run: npm run cy:smoke-tests
 
     - name: Create report
       if: success() || failure()
