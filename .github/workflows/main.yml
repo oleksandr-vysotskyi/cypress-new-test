@@ -10,10 +10,10 @@ on:
 
 env:
   WORK_ENV: DEV
-  USER: ${{ secrets.USER }}
-  PASSWORD: ${{ secrets.PASSWORD }}
-  SITEAUTHUSERNAME: ${{ secrets.SITEAUTHUSERNAME }}
-  SITEAUTHPASSWORD: ${{ secrets.SITEAUTHPASSWORD }}
+  user: ${{ secrets.USER_EMAIL }}
+  password: ${{ secrets.USER_PASSWORD }}
+  siteAuthUserName: ${{ secrets.SITE_AUTH_USER }}
+  siteAuthPassword: ${{ secrets.SITE_AUTH_PASSWORD }}
 
 jobs:
   cypress_run:
@@ -33,10 +33,10 @@ jobs:
 
     - name: Run Cypress Tests
       run: |
-        echo "User Email: $USER_EMAIL"
-        echo "User Password: $USER_PASSWORD"
-        echo "Site Auth User: $SITE_AUTH_USER"
-        echo "Site Auth Password: $SITE_AUTH_PASSWORD"
+        echo "User Email: $user"
+        echo "User Password: $password"
+        echo "Site Auth User: $siteAuthUserName"
+        echo "Site Auth Password: $siteAuthPassword"
         npm run cy:smoke-tests
 
     - name: Create report
