@@ -3,18 +3,17 @@ name: hillel auto e2e tests
 on:
   workflow_dispatch:
   push:
-        branches:
-          - main
+    branches:
+      - main
   pull_request:
     types: [opened, edited, reopened]
 
-
 env:
- WORK_ENV: DEV
- USER_EMAIL: ${{ secrets.USER_EMAIL }}
- USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
- SITE_AUTH_USER: ${{ secrets.SITE_AUTH_USER }}
- SITE_AUTH_PASSWORD: ${{ secrets.SITE_AUTH_PASSWORD }}
+  WORK_ENV: DEV
+  USER_EMAIL: ${{ secrets.USER_EMAIL }}
+  USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+  SITE_AUTH_USER: ${{ secrets.SITE_AUTH_USER }}
+  SITE_AUTH_PASSWORD: ${{ secrets.SITE_AUTH_PASSWORD }}
 
 jobs:
   cypress_run:
@@ -24,19 +23,29 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '14'
+
     - name: Install dependencies
       run: npm install
 
     - name: Run Cypress Tests
-      run: npm run cy:smoke-tests
+      run: |
+        echo "User Email: $USER_EMAIL"
+        echo "User Password: $USER_PASSWORD"
+        echo "Site Auth User: $SITE_AUTH_USER"
+        echo "Site Auth Password: $SITE_AUTH_PASSWORD"
+        npm run cy:smoke-tests
 
     - name: Create report
       if: success() || failure()
       run: npm run report:all
+
     - name: Upload report
       if: always()
       uses: actions/upload-artifact@v3
       with:
         name: test-report
         path: mochawesome-report/
-
