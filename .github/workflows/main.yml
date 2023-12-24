@@ -18,6 +18,18 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+    - name: Use Secrets
+      run: |
+        echo "User Email: $USER_EMAIL"
+        echo "User Password: $USER_PASSWORD"
+        echo "Site Auth User: $SITE_AUTH_USER"
+        echo "Site Auth Password: $SITE_AUTH_PASSWORD"
+
+      env:
+        USER_EMAIL: ${{ secrets.USER_EMAIL }}
+        USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+        SITE_AUTH_USER: ${{ secrets.SITE_AUTH_USER }}
+        SITE_AUTH_PASSWORD: ${{ secrets.SITE_AUTH_PASSWORD }}
 
     - name: Run Cypress Tests
       run: npm run cy:smoke-tests
