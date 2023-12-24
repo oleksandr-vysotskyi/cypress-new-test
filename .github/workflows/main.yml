@@ -28,5 +28,5 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v3
       with:
-        name: mochawesome
+        name: test-report
         path: mochawesome-report/
