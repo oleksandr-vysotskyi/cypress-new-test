@@ -8,13 +8,6 @@ on:
   pull_request:
     types: [opened, edited, reopened]
 
-env:
-  WORK_ENV: DEV
-  email: ${{ secrets.USER_EMAIL }}
-  password: ${{ secrets.USER_PASSWORD }}
-  siteAuthUserName: ${{ secrets.SITE_AUTH_USER }}
-  siteAuthPassword: ${{ secrets.SITE_AUTH_PASSWORD }}
-
 jobs:
   cypress_run:
     runs-on: ubuntu-latest
