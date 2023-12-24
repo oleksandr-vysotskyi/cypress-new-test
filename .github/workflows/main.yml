@@ -8,6 +8,14 @@ on:
   pull_request:
     types: [opened, edited, reopened]
 
+
+env:
+ WORK_ENV: dev
+ USER_EMAIL: ${{ secrets.USER_EMAIL }}
+ USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+ SITE_AUTH_USER: ${{ secrets.SITE_AUTH_USER }}
+ SITE_AUTH_PASSWORD: ${{ secrets.SITE_AUTH_PASSWORD }}
+
 jobs:
   cypress_run:
     runs-on: ubuntu-latest
@@ -20,12 +28,7 @@ jobs:
       run: npm install
 
     - name: Run Cypress Tests
-      run: |
-        echo "User Email: $USER_EMAIL"
-        echo "User Password: $USER_PASSWORD"
-        echo "Site Auth User: $SITE_AUTH_USER"
-        echo "Site Auth Password: $SITE_AUTH_PASSWORD"
-        npm run cy:smoke-tests
+      run: npm run cy:smoke-tests
 
     - name: Create report
       if: success() || failure()
