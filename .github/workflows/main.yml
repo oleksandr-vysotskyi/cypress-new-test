@@ -10,7 +10,7 @@ on:
 
 
 env:
- WORK_ENV: dev
+ WORK_ENV: DEV
  USER_EMAIL: ${{ secrets.USER_EMAIL }}
  USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
  SITE_AUTH_USER: ${{ secrets.SITE_AUTH_USER }}
