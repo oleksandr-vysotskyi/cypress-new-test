@@ -11,10 +11,10 @@ on:
 
 env: 
   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
-  CYPRESS_siteAuthUserName: ${{ secrets.SITEAUTHUSERNAME}}
-  CYPRESS_siteAuthPassword: ${{ secrets.SITEAUTHPASSWORD}}
-  CYPRESS_user: ${{ secrets.USER}}
-  CYPRESS_password: ${{ secrets.PASSWORD}}
+  siteAuthUserName: ${{ secrets.SITEAUTHUSERNAME}}
+  siteAuthPassword: ${{ secrets.SITEAUTHPASSWORD}}
+  user: ${{ secrets.USER}}
+  password: ${{ secrets.PASSWORD}}
   
 jobs:
   cypress_run:
