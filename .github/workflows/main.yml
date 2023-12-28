@@ -11,7 +11,7 @@ on:
 
 env: 
   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
-  SITEAUTHUSERNAME_siteAuthUserName: ${{ secrets.SITEAUTHUSERNAME}}
+  CYPRESS_siteAuthUserName: ${{ secrets.SITEAUTHUSERNAME}}
   CYPRESS_siteAuthPassword: ${{ secrets.SITEAUTHPASSWORD}}
   CYPRESS_user: ${{ secrets.USER}}
   CYPRESS_password: ${{ secrets.PASSWORD}}
